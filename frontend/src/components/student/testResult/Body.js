@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from "react";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import { useDispatch, useSelector } from "react-redux";
-import { getSubject } from "../../../redux/actions/adminActions";
-import { MenuItem, Select } from "@mui/material";
-import Spinner from "../../../utils/Spinner";
-import { SET_ERRORS } from "../../../redux/actionTypes";
-import * as classes from "../../../utils/styles";
+const isNotActiveStyle =
+  "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 ease-in-out capitalize hover:bg-gray-200 py-2 my-1";
+const isActiveStyle =
+  "flex items-center px-5 gap-3 text-blue-600 transition-all duration-200 ease-in-out capitalize hover:bg-gray-200 py-2 my-1";
+
+const NavLinkComponent = ({ to, icon, label }) => {
+  return (
+    <NavLink
+      to={to}
+      className={({ isActive }) => (isActive ? isActiveStyle : isNotActiveStyle)}
+    >
+      {icon && <icon className="" />}
+      <h1 className="font-normal">{label}</h1>
+    </NavLink>
+  );
+};
 
 const Body = () => {
   const dispatch = useDispatch();
